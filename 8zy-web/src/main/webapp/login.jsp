@@ -109,8 +109,8 @@ body {
 	</div>-->
 	<div class="login-box">
 		<div class="login-logo">
-			 <img src="dist/img/login-logo1.png" style="width: 268px;height: 72px;border-radius: 2px;"/>
-			<!--<b style="color: #1C7FB6;">漫道短信平台</b>-->
+			<%-- <img src="dist/img/login-logo1.png" style="width: 268px;height: 72px;border-radius: 2px;"/>--%>
+			 <b style="color: #1C7FB6;">平台</b>
 		</div>
 		<div class="loginBox">
 			<!-- /.login-logo -->

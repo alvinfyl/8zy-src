@@ -38,14 +38,11 @@
 		<!-- URL拦截规则 -->
 		<property name="filterChainDefinitions">
 			<value>
+				/web/**=anon
 				/logon = anon
 				/sync/** = anon
-				/webservice/** = anon
-				/smsSend* = anon
-				/message/sendSMS.do = anon
 				/swagger/* = anon
 				/monitoring* = anon
-<!--  				/v2/* = anon  -->
 				/dist/** = anon
 				/js/** = anon
 				/plugins/** = anon
@@ -60,8 +57,6 @@
 				/updatepwd=anon
 				/user/queryMobile=anon
 				/user/restartpwd=anon
-				/message/sendCode=anon
-				/message/checkCode=anon
 				/user/add= authc,perms["user:add"]
 				/user/del/**= authc,perms["user:del"]
 				/user/editUser/**= authc,perms["user:view"]

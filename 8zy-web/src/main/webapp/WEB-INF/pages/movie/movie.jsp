@@ -44,15 +44,6 @@
 						<div class="headbox" style="float:left;">
 							<input type="text" name="gatewayname" class="form-control" id="txt_search_gatewayname" placeholder="通道名称">
 						</div>
-						<div class="dropdown" style="float:left;">
-							    <select class="form-control"  id="operType_search">
-                                    <option >全部</option>
-                                    <option value="1">移动</option>
-                                    <option value="2">联通</option>
-                                    <option value="3">电信</option>
-                                    <option value="4">国际</option>
-                                </select>
-						</div>
 						<div style="text-align: left;float: left;">
 							<button type="button" style="margin-left: 20px" id="btn_query" onclick="serchstrk()" class="btn btn-primary">查询
                             </button>

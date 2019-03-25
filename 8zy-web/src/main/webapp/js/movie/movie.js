@@ -23,7 +23,7 @@ function init() {
             sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
             pageNumber:1,                       //初始化加载第一页，默认第一页
             pageSize: 10,                       //每页的记录行数（*）
-            pageList: [10, 20, 200, 500],        //可供选择的每页的行数（*）
+            pageList: [10, 50, 100, 500],        //可供选择的每页的行数（*）
             search: false,                       //是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
             strictSearch: true,
             showColumns: true,                  //是否显示所有的列
@@ -47,38 +47,43 @@ function init() {
 				align : 'center',
 				width : 100
 			}, {
-				field : 'describe',
+				field : 'describes',
 				title : '描述',
 				align : 'center',
 				width : 100
 			},{
-				field : 'lDirector',
+				field : 'alias',
+				title : '又名',
+				align : 'center',
+				width : 100
+			},{
+				field : 'score',
+				title : '豆瓣评分',
+				align : 'center',
+				width : 50
+			},{
+				field : 'ldirector',
 				title : '导演',
 				align : 'center',
 				width : 100
 			},{
-				field : 'lType',
+				field : 'ltype',
 				title : '类型',
 				align : 'center',
                 width : 100
-			/*	width : 80,
-				formatter : function(value, row, index) {
-					if (value == "1") {
-						return "是";
-					} else {
-						return "否";
-					}
-				}*/
 			}, {
 				field : 'updatetime',
 				title : '更新日期',
 				align : 'center',
-				width : 100
+				width : 50,
+                formatter: function (value, row, index) {
+                    return dfYmd(value);
+                }
 			}, {
 				field : 'clicks',
 				title : '点击量',
 				align : 'center',
-				width : 100
+				width : 50
 			}
           ]
         });

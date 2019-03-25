@@ -57,7 +57,7 @@ function init() {
         sidePagination: "server",
         pageNumber:1,
         pageSize: 10,
-        pageList: [10, 20, 200, 500],
+        pageList: [10, 50, 100, 500],
         search: false,
         showColumns: true,
         showRefresh: true,

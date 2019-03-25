@@ -112,18 +112,20 @@ public class Mainspiders {
                 return;
             }
 
+            Movie movie = new Movie();
+            movie.setKeyid(keyid);
             //存在就不操作
-            if (movieService.count(new QueryWrapper<Movie>().eq("keyid", keyid)) > 0) {
+            List<Movie> ml = movieService.list(new QueryWrapper<Movie>().eq("keyid", keyid));
+            if ( ml.size()> 0) {
                 if (operate == 0) {
                     return;
                 } else if (operate == 1) {//1 更新插入
                     movieService.remove(new QueryWrapper<Movie>().eq("keyid", keyid));
+                    //不更新字段
+                    movie.setClicks(ml.get(0).getClicks());
                 }
 
             }
-
-            Movie movie = new Movie();
-            movie.setKeyid(keyid);
             //大类
             String bigtype = document.getElementsByClass("s_block1").get(0).getElementsByTag("a").get(1).html();
             System.out.println(bigtype);
