@@ -121,7 +121,7 @@
 							</div>
 							<div class="tab-content" id="myTabContent">
 								<div class="tab-pane active" id="tab_1">
-									<iframe scrolling="auto" style="width: 100%; height: 100%;" frameborder="0" src="pages/toPage/common/table1"></iframe>
+									<iframe scrolling="auto" style="width: 100%; height: 100%;" frameborder="0" src="/pages/toPage/common/table1"></iframe>
 								</div>
 								<!-- /.tab-pane -->
 								<div id="control-sidebar-theme-demo-options-tab" class="tab-pane active">
@@ -292,7 +292,7 @@
 				line-height: 30px;
 			}
 			a .logo-lg{
-				background: url(dist/img/logo.png) no-repeat;
+				background: url(/dist/img/logo.png) no-repeat;
 				width:230px;
 				height:50px;
 				border-radius: 2px;

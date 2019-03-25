@@ -21,9 +21,9 @@
 	<!--  注入安全管理器对象  -->
 		<property name="securityManager" ref="securityManager"></property>
 		<!-- 注入登录的访问URL -->
-		<property name="loginUrl" value="/login"></property>
+		<property name="loginUrl" value="/web/index"></property>
 		<!-- 登录成功后的跳转页面 -->
-		<property name="successUrl" value="/index.jsp"></property>
+		<property name="successUrl" value="/pages/toPage/common/index"></property>
 		<!-- 注入权限不足提示页面 -->
 		<property name="unauthorizedUrl" value="/unauthor.jsp"></property>
 		

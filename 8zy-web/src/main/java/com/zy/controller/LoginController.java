@@ -61,6 +61,7 @@ public class LoginController  extends BaseController {
     }
 
 
+    String indexpage = "/pages/toPage/common/index";
 
     /**
      * 这个方法是给/login.jsp登陆用的
@@ -151,7 +152,7 @@ public class LoginController  extends BaseController {
                 //获取ip地址
                 String ip = IpAddressutils.getIpAddress(request);
                 loginusers.remove(uid);
-                modelAndView = new ModelAndView("redirect:/index.jsp");
+                modelAndView = new ModelAndView("redirect:"+indexpage);
 
                 if (date == null) {
                     request.getSession().setAttribute("isfirst", "0");
@@ -160,12 +161,12 @@ public class LoginController  extends BaseController {
                 }
                 return modelAndView;
             } catch (UnknownAccountException e) {// 账号不存在异常
-                modelAndView = new ModelAndView("forward:/login.jsp");
+                modelAndView = new ModelAndView("forward:"+indexpage);
                 modelAndView.addObject("message", "账号不存在");
                 return modelAndView;
             } catch (Exception e) {
                 e.printStackTrace();
-                modelAndView = new ModelAndView("forward:/login.jsp");
+                modelAndView = new ModelAndView("forward:"+indexpage);
                 List<YtUserinfo> nn_list = userinfoService.findUserByIdOrEn(uid);
                 if (nn_list != null && nn_list.size() > 0) {
                     /*
@@ -207,7 +208,7 @@ public class LoginController  extends BaseController {
                 }
 
                 if (loginusers.get(uid).getTimes() > 4) {// 大于5次 锁定用户
-                    modelAndView = new ModelAndView("forward:/login.jsp");
+                    modelAndView = new ModelAndView("forward:"+indexpage);
                     modelAndView.addObject("message", "该账号密码输入超过限定次数，请再等待900秒或联系管理员解锁！");// 或联系管理员解锁
                     return modelAndView;
                 }
@@ -222,7 +223,7 @@ public class LoginController  extends BaseController {
             String ip = IpAddressutils.getIpAddress(request);
         }
         // 验证码输入错误,跳转到登录页面,设置错误信息
-        modelAndView = new ModelAndView("forward:/login.jsp");
+        modelAndView = new ModelAndView("forward:"+indexpage);
         modelAndView.addObject("message", "验证码输入错误");
         // 密码不正确异常
         return modelAndView;
@@ -233,7 +234,7 @@ public class LoginController  extends BaseController {
      **/
     @RequestMapping(value = "login", method = RequestMethod.GET)
     public ModelAndView showlogin(HttpServletRequest request) {
-        ModelAndView modelAndView = new ModelAndView("redirect:/login.jsp");
+        ModelAndView modelAndView = new ModelAndView("redirect:"+indexpage);
         return modelAndView;
     }
     @RequestMapping(value = "index", method = RequestMethod.GET)

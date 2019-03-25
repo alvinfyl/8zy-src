@@ -80,9 +80,9 @@ strong { font-weight:700; }
 	#nav a { font-size:14px; color:#FFF; outline:none; }
 	#nav li { float:left; padding-left:18px; padding-right:18px; }
 	#nav li a:hover {text-decoration:none !important; }
-	#nav .current { background:url(./img/nav-element-bg.png) repeat-x 0px 4px; height:39px !important; overflow:hidden; } 
+	#nav .current { background:url(/web/img/nav-element-bg.png) repeat-x 0px 4px; height:39px !important; overflow:hidden; }
 	#nav .current a { color:#333 !important; font-weight:700; line-height:44px; }
-#nav-under { height:32px; width:960px; margin-left:auto; margin-right:auto; margin-bottom:12px; background:url(./img/nav-under-bg.png) no-repeat bottom; text-align:left !important; overflow:hidden; clear:both !important; overflow:hidden; color:#333 !important; }
+#nav-under { height:32px; width:960px; margin-left:auto; margin-right:auto; margin-bottom:12px; background:url(/web/img/nav-under-bg.png) no-repeat bottom; text-align:left !important; overflow:hidden; clear:both !important; overflow:hidden; color:#333 !important; }
 	#nav-under ul { padding-left:38px; line-height:31px; }
 	#nav-under ul li { float:left; margin-right:10px; }
 .nav2 { float:left; padding-left:16px; }
@@ -137,19 +137,19 @@ strong { font-weight:700; }
 	
 	
 	/* 内容页tab list 样式 */
-	.cpage { height:49px; overflow:hidden;  background1:url(./img/content_tab_bg2.png) repeat-x; margin-bottom:-1px;  }
+	.cpage { height:49px; overflow:hidden;  background1:url(/web/img/content_tab_bg2.png) repeat-x; margin-bottom:-1px;  }
 	.cpage li { float:left; vertical-align:bottom; height:49px; padding:20px 10px 0 8px; border-right:#FFF 1px solid; cursor:pointer;
 		font-size:14px; color:#000; }	
 	.cpage .ol1:hover { border-top:#666 3px solid; padding:17px 10px 0 8px !important; height:46px; 
 		background:#F8F8F8 ;  }
 	.cpage .dl1:hover { border-top:#666 3px solid; padding:17px 10px 0 8px !important; height:46px; 
 		background:#F8F8F8; 	 }		
-	.cpage .ol:hover { background:url(./img/content_tab_bg.png) repeat-x;  }
-	.cpage .dl:hover { background:url(./img/content_tab_bg.png) repeat-x; 	 }	 
+	.cpage .ol:hover { background:url(/web/img/content_tab_bg.png) repeat-x;  }
+	.cpage .dl:hover { background:url(/web/img/content_tab_bg.png) repeat-x; 	 }	 
 	.cpage .olselected { border-top:#666 3px solid; padding:17px 10px 0 8px !important; height:47px; background:#fafafa !important;  }
 	.cpage .dlselected { border-top:#666 3px solid; padding:17px 10px 0 8px !important; height:47px; background:#fafafa !important;  }
-	.cpage .ol { background:url(./img/content_tab_bg2.png) repeat-x; padding-left:10px; height:28px !important; overflow:; }
-	.cpage .dl { background:url(./img/content_tab_bg2.png) repeat-x; height:28px !important; overflow:hidden;  }
+	.cpage .ol { background:url(/web/img/content_tab_bg2.png) repeat-x; padding-left:10px; height:28px !important; overflow:; }
+	.cpage .dl { background:url(/web/img/content_tab_bg2.png) repeat-x; height:28px !important; overflow:hidden;  }
 	.cpage li ul { display:none; background:#FFFFFF; float:none; position:absolute; z-index:1; margin-left:-9px; margin-top:8px; }
 	.cpage li ul li { float:none; width:92px; height:32px; line-height:32px; padding:0px; text-align:center;
 		border:none; border:1px solid #FF4000; border-top:none; margin-bottom:0px; background:none !important; padding:0 !important; }
@@ -661,10 +661,10 @@ strong { font-weight:700; }
 .backcolor1 { background:#e9e9e9; }
 
 .format_ico4,.format_ico5,.format_ico3,.format_ico2,.format_icop { display:inline-block; height:20px; width:36px; margin:0 5px 0 0; }
-.format_ico4 {  background:url(./img/format_icos_160505.png) no-repeat 0px -8px; }
-.format_ico5 {  background:url(./img/format_icos_160505.png) no-repeat 0px -71px; }
-.format_ico3 {  background:url(./img/format_icos_160505.png) no-repeat 0px -29px; }
-.format_ico2 {  background:url(./img/format_icos_160505.png) no-repeat 0px -50px; }
+.format_ico4 {  background:url(/web/img/format_icos_160505.png) no-repeat 0px -8px; }
+.format_ico5 {  background:url(/web/img/format_icos_160505.png) no-repeat 0px -71px; }
+.format_ico3 {  background:url(/web/img/format_icos_160505.png) no-repeat 0px -29px; }
+.format_ico2 {  background:url(/web/img/format_icos_160505.png) no-repeat 0px -50px; }
 .format_icop {  background:url(./img/contentp_play.png) no-repeat 0px 4px; width:13px; }
 
 .formatblock3-left { width:640px; overflow:hidden; }

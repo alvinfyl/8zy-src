@@ -13,6 +13,6 @@ public class PageController {
 	public String toIndex(@PathVariable(value = "baseAddress") String baseAddress,
 			@PathVariable(value = "address") String address) {
 
-		return "/" + baseAddress + "/" + address;
+		return "/pages/" + baseAddress + "/" + address;
 	}
 }
