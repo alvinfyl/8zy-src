@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true">
+
+	<property resource="config.properties" />
+	<property name="USER_HOME" value="${log_dir}" />
+
+	<!-- 系统级配置文件 开始 -->
+	<appender name="STDOUT"
+		class="ch.qos.logback.core.ConsoleAppender">
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<Pattern>%date{yyyy-MM-dd HH:mm:ss.SSS}[%-5p] [%-10.10t][%30.30c{1}:%-3.3L] - %msg%n
+			</Pattern>
+		</layout>
+	</appender>
+
+	<appender name="server"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${USER_HOME}/server.log</file>
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<fileNamePattern>${USER_HOME}/logs/server.%d{yyyy-MM-dd}.%i.log.zip
+			</fileNamePattern>
+			<maxFileSize>200MB</maxFileSize>
+			<maxHistory>90</maxHistory>
+			<totalSizeCap>20GB</totalSizeCap>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%date{yyyy-MM-dd HH:mm:ss.SSS}[%-5p] [%-10.10t][%30.30c{1}:%-3.3L] --%mdc{client} %msg%n</pattern>
+			<charset>UTF-8</charset>
+		</encoder>
+	</appender>
+
+<!-- 	<logger name="com.zy." levle="debug"/> -->
+
+	<root level="info">
+		<appender-ref ref="STDOUT" />
+<!-- 		<appender-ref ref="server" /> -->
+	</root>
+</configuration>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd  ">
+	<context:component-scan base-package="com.zy..controller" />
+	
+	<bean
+        class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <!-- 允许JVM参数覆盖 -->
+        <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE" />
+        <!-- 忽略没有找到的资源文件 -->
+        <property name="ignoreResourceNotFound" value="true" />
+        <!-- 配置资源文件 -->
+        <property name="locations">
+            <list>
+                <value>classpath:config.properties</value>
+            </list>
+        </property>
+    </bean>
+	
+	<!-- 配置注解方式的处理器映射器和适配器 -->
+	<!-- <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"> 
+		<property name="messageConverters"> <list> <bean class="org.springframework.http.converter.StringHttpMessageConverter"> 
+		<property name="supportedMediaTypes"> <list> <value>text/html;charset=UTF-8</value> 
+		</list> </property> </bean> </list> </property> </bean> <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" 
+		/> -->
+	<!-- 这种配置还默认配置了参数绑定组件：比如json的参数绑定 -->
+	<!-- <mvc:annotation-driven/> -->
+	<!-- 注解驱动 -->
+	<!-- <bean class="org.springframework.web.servlet.mvc.method.annotation.PathVariableMapMethodArgumentResolver"></bean> -->
+	<mvc:annotation-driven>
+		<mvc:message-converters>
+			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+				<constructor-arg index="0" value="UTF-8" />
+			</bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+	<!-- 日期格式转换器 -->
+	<!--<bean id="conversionService"
+		class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+		<property name="converters">
+			<list>
+				<bean class="com.zy..converter.DateConverter" />
+			</list>
+		</property>
+	</bean>-->
+	<!--拦截所有请求时需要对静态资源放行 -->
+	<mvc:default-servlet-handler />
+	
+	<!-- 配置视图解析器 -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/pages"></property>
+		<property name="suffix" value=".jsp"></property>
+	</bean>
+	<!--避免IE执行AJAX时，返回JSON出现下载文件 -->
+	<!-- <bean id="mappingJacksonHttpMessageConverter" class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter"> 
+		<property name="supportedMediaTypes"> <list> <value>text/html;charset=UTF-8</value> 
+		</list> </property> </bean> -->
+	<!-- 启动SpringMVC的注解功能，完成请求和注解POJO的映射 -->
+	<!-- <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"> 
+		<property name="messageConverters"> <list> <ref bean="mappingJacksonHttpMessageConverter" 
+		/> JSON转换器 </list> </property> </bean> -->
+
+
+	<!-- SpringMVC上传文件时，需要配置MultipartResolver处理器 -->
+	<!-- <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"> 
+		<property name="defaultEncoding" value="UTF-8" /> 指定所上传文件的总大小不能超过10485760000B。注意maxUploadSize属性的限制不是针对单个文件，而是所有文件的容量之和 
+		<property name="maxUploadSize" value="10485760000"></property> <property 
+		name="maxInMemorySize" value="40960"></property> </bean> -->
+	<!-- <mvc:interceptors> <mvc:interceptor> <mvc:mapping path="/*"/> <bean 
+		class="com.zy..intercepter.LoginSessionInterceptor"> <property name="excludedUrls">
+		<list> <value>/login</value> </list> </property> </bean> </mvc:interceptor> 
+		</mvc:interceptors> <bean id="handlerExceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver"> 
+		<property name="exceptionMappings"> <props> <prop key="com.zy..intercepter.AutoException">redirect:/login</prop>
+		</props> </property> </bean> -->
+<!--	<mvc:interceptors>
+		<bean class="com.zy..intercepter.LoginSessionInterceptor"></bean>
+	</mvc:interceptors>-->
+	<!-- 配置拦截器 -->
+	<!-- <mvc:interceptors> <mvc:interceptor> 配置以login开头的请求进入拦截器 <mvc:mapping 
+		path="/login" /> <bean class="com.zy..intercepter.LoginIntercepter"
+		/> </mvc:interceptor> </mvc:interceptors> -->
+
+	<!-- 配置校验器 <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"> 
+		validation校验框架的提供类 <property name="providerClass" value="org.hibernate.validator.HibernateValidator"></property> 
+		指定校验信息的配置文件 <property name="validationMessageSource" ref="validationMessageSource"></property> 
+		</bean> -->
+	<!-- 校验信息的配置文件 <bean id="validationMessageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource"> 
+		校验信息的基本名称 ,默认使用的就是properties文件 <property name="basenames"> <list> <value>classpath:validationMessage</value> 
+		</list> </property> 文件编码 <property name="fileEncodings" value="utf8"></property> 
+		</bean> -->
+</beans>	

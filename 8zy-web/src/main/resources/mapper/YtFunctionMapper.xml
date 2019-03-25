@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zy.mapper.YtFunctionMapper">
+
+
+    <!-- 查询该用户ID下的所有权限 -->
+    <select id="findListByUserId" parameterType="string" resultType="com.zy.entity.YtFunction">
+		select * FROM YT_FUNCTION F LEFT OUTER JOIN
+		YT_ROLE_FUNC_RELATION FR ON F.ID = FR.FUNCTIONID LEFT OUTER JOIN
+		YT_USER_ROLE_RELATION UR ON FR.ROLEID = UR.ROLEID WHERE UR.USERID= #{userid,jdbcType=VARCHAR}
+	</select>
+
+	<!-- 查询根权限 -->
+	<select id="selectRoot" resultType="com.zy.entity.YtFunction">
+		select * FROM YT_FUNCTION F WHERE F.PID = F.ID ORDER BY F.ZINDEX ASC
+	</select>
+
+	<!-- 查询该角色ID下的所有权限 -->
+	<select id="findListByRoleId" parameterType="string" resultType="com.zy.entity.YtFunction">
+		select * FROM YT_FUNCTION F LEFT OUTER JOIN
+		YT_ROLE_FUNC_RELATION FR ON F.ID = FR.FUNCTIONID WHERE FR.ROLEID= #{roleId}
+	</select>
+
+	<!-- 查询该用户能看到的根菜单 -->
+	<select id="selectRootMenuByUserId" resultType="com.zy.entity.YtFunction" parameterType="string">
+		select * FROM YT_FUNCTION F LEFT OUTER JOIN
+		YT_ROLE_FUNC_RELATION FR ON F.ID = FR.FUNCTIONID LEFT OUTER JOIN
+		YT_USER_ROLE_RELATION UR ON FR.ROLEID = UR.ROLEID
+		WHERE UR.USERID= #{userid,jdbcType=VARCHAR} AND F.ISMENU = '1' AND F.PID = F.ID ORDER BY F.ZINDEX ASC
+	</select>
+
+	<!-- 查询该用户能看到的二级菜单 -->
+	<select id="getChildMenuByUserId" resultType="com.zy.entity.YtFunction">
+		select * FROM YT_FUNCTION F LEFT OUTER JOIN
+		YT_ROLE_FUNC_RELATION FR ON F.ID = FR.FUNCTIONID LEFT OUTER JOIN
+		YT_USER_ROLE_RELATION UR ON FR.ROLEID = UR.ROLEID
+		WHERE UR.USERID= #{userid,jdbcType=VARCHAR} AND F.ISMENU = '1' AND F.ID != #{id,jdbcType=VARCHAR} AND F.PID = #{id,jdbcType=VARCHAR} ORDER BY F.ZINDEX ASC
+	</select>
+
+	<!-- 查询根菜单 -->
+	<select id="selectRootMenu" resultType="com.zy.entity.YtFunction">
+		select * FROM YT_FUNCTION F WHERE F.PID = F.ID AND F.ISMENU = '1' ORDER BY F.ZINDEX ASC
+	</select>
+
+</mapper>

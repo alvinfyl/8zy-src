@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zy.mapper.YtUserinfoMapper">
+
+
+    <!-- 根据id或账号，查找用户，登陆时用的方法 -->
+    <select id="findUserByIdOrEn" resultType="com.zy.entity.YtUserinfo" parameterType="string">
+		SELECT * FROM YT_USERINFO WHERE status=2  and (USERID=#{useren} or USEREN=#{useren})
+	</select>
+
+</mapper>
