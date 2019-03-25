@@ -9,6 +9,7 @@
 </head>
 <body>
 
-<jsp:forward page="/pages/toPage/common/index"></jsp:forward>
+<%--<jsp:forward page="/pages/toPage/common/index"></jsp:forward>--%>
+<jsp:forward page="/web/index"></jsp:forward>
 </body>
 </html>
